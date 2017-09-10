@@ -18,10 +18,8 @@ public class SpalshActivity extends AppCompatActivity {
         mVersion = MyUtils.getVersion(getApplicationContext());
         mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
         mVersionTV.setText("版本号:"+mVersion);
-        switch (mVersion){
-            case "version:1.0" :
+        if(true){
 
         }
-
     }
 }
