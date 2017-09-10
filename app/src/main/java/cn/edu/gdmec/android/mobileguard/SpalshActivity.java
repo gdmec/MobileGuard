@@ -21,6 +21,7 @@ public class SpalshActivity extends AppCompatActivity {
         if(true){
             //do nothing
             //do something by cuiyu
+            //edit by cuiyu on macbook pro
         }
     }
 }
