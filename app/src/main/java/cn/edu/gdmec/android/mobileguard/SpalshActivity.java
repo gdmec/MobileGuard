@@ -20,6 +20,7 @@ public class SpalshActivity extends AppCompatActivity {
         mVersionTV.setText("版本号:"+mVersion);
         if(true){
             //do nothing
+            //do something by cuiyu
         }
     }
 }
