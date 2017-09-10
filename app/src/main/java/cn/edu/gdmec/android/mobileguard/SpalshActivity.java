@@ -19,7 +19,7 @@ public class SpalshActivity extends AppCompatActivity {
         mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
         mVersionTV.setText("版本号:"+mVersion);
         if(true){
-
+            //do nothing
         }
     }
 }
