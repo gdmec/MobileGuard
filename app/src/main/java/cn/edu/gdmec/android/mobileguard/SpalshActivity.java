@@ -22,6 +22,8 @@ public class SpalshActivity extends AppCompatActivity {
             //do nothing
             //do something by cuiyu
             //edit by cuiyu on macbook pro
+            //update by york cui on macbook air
+
         }
     }
 }
