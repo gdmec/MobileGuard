@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import junit.runner.Version;
+
 import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
+import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 
 public class SpalshActivity extends AppCompatActivity {
     private String mVersion;
@@ -18,12 +21,13 @@ public class SpalshActivity extends AppCompatActivity {
         mVersion = MyUtils.getVersion(getApplicationContext());
         mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
         mVersionTV.setText("版本号:"+mVersion);
-        if(true){
-            //do nothing
-            //do something by cuiyu
-            //edit by cuiyu on macbook pro
-            //update by york cui on macbook air
+        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SpalshActivity.this);
+        new Thread(){
 
-        }
+            @Override
+            public void run() {
+                versionUpdateUtils.getCloudVersion();
+            }
+        }.start();
     }
 }

@@ -13,14 +13,20 @@ import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
+import java.util.Date;
+
+import static java.lang.Thread.sleep;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ExampleInstrumentedTest {
     //包名
     private static final String BASIC_SAMPLE_PACKAGE
@@ -56,13 +62,54 @@ public class ExampleInstrumentedTest {
                 LAUNCH_TIMEOUT);
     }
 
+    public boolean waitForUiObject(UiSelector selector,double timeOut) {//等待对象出现
+        Date start = new Date();
+        boolean result = false;
+        while(!result){
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            UiObject it = mDevice.findObject(selector);
+            if (it.exists()) {
+                result = true;
+                break;
+            }
+            Date end = new Date();
+            long time = end.getTime() - start.getTime();
+            if (time>timeOut) {
+                break;
+            }
+        }
+        return result;
+    }
+    @Test
+    public void t1ShowVersion() throws Exception {
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("版本号"));
+        assertNotNull("出现版本号",result);
+    }
 
     @Test
-    public void testVersion() throws Exception {
-        // 使用UIselector找到包含『版本号』文字的UI组件
-        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("版本号"));
-        String resultText = result.getText();
-        //断言是否是预期的数值
-        assertEquals("版本检查结果", "版本号:1.2", resultText);
+    public void t2ShowUpdateDialog() throws Exception {
+//        UiSelector us = new UiSelector().className("android.app.AlertDialog");
+//        if(waitForUiObject(us,10000)){
+//            UiObject object2 ;
+//            object2 = mDevice.findObject(us);
+//            assertNotNull("弹出升级对话框",object2);
+//        }
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("2.0"));
+        assertNotNull("检查到新版本",result);
     }
+
+    @Test
+    public void t3ShowMainActivity() throws Exception {
+        // 使用UIselector找到包含『版本号』文字的UI组件
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        assertNotNull("出现主界面手机防盗",result);
+    }
+
+
 }
