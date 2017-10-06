@@ -119,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void confirm() {
                 if (TextUtils.isEmpty(mInPswdDialog.getPassword())) {
-                    Toast.makeText(HomeActivity.this, "密码不能为空！", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码不能为空！", Toast.LENGTH_LONG).show();
                 } else if (password.equals(MD5Utils.encode(mInPswdDialog
                         .getPassword()))) {
                     // 进入防盗主界面

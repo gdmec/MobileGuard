@@ -30,6 +30,9 @@ android {
         exclude 'META-INF/LGPL2.1'
     }
     useLibrary 'org.apache.http.legacy'
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
