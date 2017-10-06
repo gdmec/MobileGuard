@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     // 对话框消失，弹出土司
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this, "密码有误，请重新输入！", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码有误，请重新输入！", Toast.LENGTH_LONG).show();
                 }
             }
 
