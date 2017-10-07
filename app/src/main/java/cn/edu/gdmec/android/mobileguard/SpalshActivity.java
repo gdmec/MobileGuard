@@ -20,7 +20,7 @@ public class SpalshActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         mVersion = MyUtils.getVersion(getApplicationContext());
         mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
-        mVersionTV.setText("版本号:"+mVersion);
+        mVersionTV.setText("Version:"+mVersion);
         final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SpalshActivity.this);
         new Thread(){
 
