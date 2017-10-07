@@ -87,6 +87,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void t1ShowVersion() throws Exception {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("版本号"));
+        String ver = result.getText();
+        System.out.println(ver);
         assertNotNull("出现版本号",result);
     }
 
@@ -98,7 +100,9 @@ public class ExampleInstrumentedTest {
 //            object2 = mDevice.findObject(us);
 //            assertNotNull("弹出升级对话框",object2);
 //        }
-        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("2.0"));
+        UiObject result = mDevice.findObject(new UiSelector().textContains("2.0"));
+        String str = result.getText();
+        System.out.println(str);
         assertNotNull("检查到新版本",result);
     }
 
