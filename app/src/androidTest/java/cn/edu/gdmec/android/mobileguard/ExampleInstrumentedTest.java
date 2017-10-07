@@ -84,16 +84,9 @@ public class ExampleInstrumentedTest {
         }
         return result;
     }
-    @Test
-    public void t1ShowVersion() throws Exception {
-        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("版本号"));
-        String ver = result.getText();
-        System.out.println(ver);
-        assertNotNull("出现版本号",result);
-    }
 
     @Test
-    public void t2ShowUpdateDialog() throws Exception {
+    public void t1ShowUpdateDialog() throws Exception {
 //        UiSelector us = new UiSelector().className("android.app.AlertDialog");
 //        if(waitForUiObject(us,10000)){
 //            UiObject object2 ;
@@ -107,7 +100,7 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void t3ShowMainActivity() throws Exception {
+    public void t2ShowMainActivity() throws Exception {
         // 使用UIselector找到包含『版本号』文字的UI组件
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
