@@ -91,12 +91,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void t1ShowUpdateDialog() throws UiObjectNotFoundException {
-//        UiSelector us = new UiSelector().className("android.app.AlertDialog");
-//        if(waitForUiObject(us,10000)){
-//            UiObject object2 ;
-//            object2 = mDevice.findObject(us);
-//            assertNotNull("弹出升级对话框",object2);
-//        }
         UiObject result = mDevice.findObject(new UiSelector().textContains("2.0"));
         String str = null;
         str = result.getText();
