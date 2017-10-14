@@ -103,6 +103,7 @@ public class ExampleInstrumentedTest {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        String str = result.getText();
         assertNotNull("出现主界面手机防盗",result);
     }
 
@@ -156,7 +157,7 @@ public class ExampleInstrumentedTest {
         mDevice.wait(Until.hasObject(By.textStartsWith("选择安全联系人")),LAUNCH_TIMEOUT);
         mDevice.swipe(400,300,0,300,100);
         result = mDevice.findObject(new UiSelector().textStartsWith("恭喜"));
-
+        String str = result.getText();
         assertNotNull("手机防盗向导",result);
     }
 }
