@@ -29,7 +29,7 @@
                 android:layout_below="@+id/imgv"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="恭 喜 ！ 设置完成"
+                android:text="恭喜 ！ 设置完成"
                 android:textColor="@android:color/white"
                 android:textScaleX="1.1"
                 android:textSize="18sp" />
