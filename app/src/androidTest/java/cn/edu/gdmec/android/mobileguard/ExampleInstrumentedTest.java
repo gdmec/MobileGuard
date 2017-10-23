@@ -187,7 +187,7 @@ public class ExampleInstrumentedTest {
         assertNotNull("手机防盗向导",result);
     }
 
-    @Test
+    //@Test
     public void t6BindSimNotYet() throws UiObjectNotFoundException {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
@@ -217,7 +217,7 @@ public class ExampleInstrumentedTest {
         String str = result.getText();
     }
 
-    @Test
+    //@Test
     public void t7BindSimOk() throws UiObjectNotFoundException {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
@@ -238,7 +238,7 @@ public class ExampleInstrumentedTest {
         btn.click();
         assertFalse("bind sim button is not enabled ",btn.isEnabled());
     }
-    @Test
+    //@Test
     public void t8SelectSecurityContacts() throws UiObjectNotFoundException {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
@@ -264,4 +264,67 @@ public class ExampleInstrumentedTest {
         String str = result.getText();
         assertEquals("security contact phonenumber",str,"1 376-079-5885");
     }
+
+    @Test
+    public void t09ConfirmDeviceAdmin() throws UiObjectNotFoundException {
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
+        String str = result.getText();
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        str = result.getText();
+    }
+    @Test
+    public void t10SetupTheftGuard() throws UiObjectNotFoundException {
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        result.clickAndWaitForNewWindow();
+        List<UiObject2> results;
+        results = mDevice.findObjects(By.clazz(EditText.class));
+        UiObject2 pwd1 = results.get(0);
+        pwd1.setText("1");
+        UiObject2 pwd2 = results.get(1);
+        pwd2.setText("1");
+        result = mDevice.findObject(new UiSelector().textStartsWith("确认"));
+        result.clickAndWaitForNewWindow();
+
+        results = mDevice.findObjects(By.clazz(EditText.class));
+        UiObject2 pwd = results.get(0);
+        pwd.setText("1");
+        result = mDevice.findObject(new UiSelector().textStartsWith("确认"));
+        result.clickAndWaitForNewWindow();
+        mDevice.wait(Until.hasObject(By.textStartsWith("手机防盗向导")),LAUNCH_TIMEOUT);
+        mDevice.swipe(400,300,0,300,100);
+        mDevice.wait(Until.hasObject(By.textStartsWith("SIM卡绑定")),LAUNCH_TIMEOUT);
+        results = mDevice.findObjects(By.clazz(Button.class));
+        UiObject2 btn = results.get(0);
+        btn.click();
+        mDevice.swipe(400,300,0,300,100);
+        result = mDevice.findObject(new UiSelector().className("android.widget.EditText"));
+        result.setText("110");
+        mDevice.swipe(400,300,0,300,100);
+        result = mDevice.findObject(new UiSelector().textStartsWith("防盗保护已经开启"));
+        String str = result.getText();
+        result = mDevice.findObject(new UiSelector().className("android.widget.ToggleButton"));
+        result.click();
+        result = mDevice.findObject(new UiSelector().textStartsWith("防盗保护没有开启"));
+        str = result.getText();
+        result = mDevice.findObject(new UiSelector().className("android.widget.ToggleButton"));
+        result.click();
+        mDevice.swipe(400,300,0,300,100);
+    }
+    @Test
+    public void t11ReSetupTheftGuard() throws UiObjectNotFoundException {
+        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        result.clickAndWaitForNewWindow();
+        List<UiObject2> results;
+        results = mDevice.findObjects(By.clazz(EditText.class));
+        UiObject2 pwd = results.get(0);
+        pwd.setText("1");
+        result = mDevice.findObject(new UiSelector().textStartsWith("确认"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("重新进入设置向导"));
+        result.click();
+        result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗向导"));
+        String str = result.getText();
+    }
+
 }

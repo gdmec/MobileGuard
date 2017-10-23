@@ -30,6 +30,7 @@ public class Setup3Activity extends BaseSetUpActivity implements View.OnClickLis
 
     @Override
     public void showNext() {
+
         //判断文本输入框中是否有电话号码
         String safePhone = mInputPhone.getText().toString().trim();
         if(TextUtils.isEmpty(safePhone)){
