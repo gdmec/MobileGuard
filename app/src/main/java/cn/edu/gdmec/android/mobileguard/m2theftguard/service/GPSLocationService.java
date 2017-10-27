@@ -18,7 +18,6 @@ import android.telephony.SmsManager;
 public class GPSLocationService extends Service {
     private LocationManager lm;
     private MyListener listener;
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
