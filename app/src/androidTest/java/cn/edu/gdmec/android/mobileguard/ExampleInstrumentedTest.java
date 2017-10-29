@@ -331,7 +331,9 @@ public class ExampleInstrumentedTest {
     }
     @Test
     public void t12CommunicationGuardWithoutTitleBar() throws Exception {
-        UiObject result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
+        result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("MobileGuard"));
         if(result.exists()){
