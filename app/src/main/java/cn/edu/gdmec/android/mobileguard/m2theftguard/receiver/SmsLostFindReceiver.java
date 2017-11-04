@@ -66,6 +66,8 @@ public class SmsLostFindReceiver extends BroadcastReceiver {
                         dpm.resetPassword("123456", 0);
                         dpm.lockNow();
                         abortBroadcast();
+                    } else {
+
                     }
                 }
             }

@@ -23,6 +23,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminRecei
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.BlackNumberOpenHelper;
+import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -60,6 +61,9 @@ public class HomeActivity extends AppCompatActivity {
                     case 1:
                         Intent intent = new Intent(HomeActivity.this, SecurityPhoneActivity.class);
                         startActivity(intent);
+                        break;
+                    case 2:
+                        startActivity(AppManagerActivity.class);
                         break;
                 }
             }
