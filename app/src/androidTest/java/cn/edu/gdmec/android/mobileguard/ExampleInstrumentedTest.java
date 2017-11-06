@@ -394,6 +394,8 @@ public class ExampleInstrumentedTest {
     }
     @Test
     public void t16AppManager() throws Exception {
+        result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
+        result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
