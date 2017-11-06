@@ -27,7 +27,8 @@ public class AppInfoParser {
     public static List<AppInfo> getAppInfos(Context context){
         //获取包管理器。
         PackageManager pm = context.getPackageManager();
-        List<PackageInfo> packInfos = pm.getInstalledPackages(0);
+        //若要获得已安装app的签名和权限信息，要在获取时传入相关flags，否则不会获取。
+        List<PackageInfo> packInfos = pm.getInstalledPackages(PackageManager.GET_SIGNATURES+PackageManager.GET_PERMISSIONS);
         List<AppInfo> appinfos = new ArrayList<AppInfo>();
         for(PackageInfo packInfo:packInfos){
             AppInfo appinfo = new AppInfo();
@@ -58,6 +59,33 @@ public class AppInfoParser {
             }else{
                 //用户应用
                 appinfo.isUserApp = true;
+            }
+
+            appinfo.versionName = packInfo.versionName;
+            appinfo.firstInstallTime = packInfo.firstInstallTime;
+
+            StringBuilder sb = new StringBuilder();
+            if(packInfo.requestedPermissions !=null){
+                for(String per:packInfo.requestedPermissions){
+                    sb.append(per+"\n");
+                }
+                appinfo.requestedPermissions = sb.toString();
+            }
+
+            final Signature[] arrSignatures = packInfo.signatures;
+            for (final Signature sig : arrSignatures) {
+                /*
+                * 读取 X.509 签名证书.
+                */
+                final byte[] rawCert = sig.toByteArray();
+                InputStream certStream = new ByteArrayInputStream(rawCert);
+                try {
+                    CertificateFactory certFactory = CertificateFactory.getInstance("X509");
+                    X509Certificate x509Cert = (X509Certificate) certFactory.generateCertificate(certStream);
+                    appinfo.signature ="Certificate issuer: " + x509Cert.getIssuerDN() + "\n";
+                } catch (CertificateException e) {
+                    // e.printStackTrace();
+                }
             }
 
             appinfos.add(appinfo);

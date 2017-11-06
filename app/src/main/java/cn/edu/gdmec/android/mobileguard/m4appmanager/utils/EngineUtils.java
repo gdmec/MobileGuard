@@ -64,5 +64,20 @@ public class EngineUtils {
             Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
         }
     }
-
+    /**显示应用信息*/
+    public static void showApplicationInfo(Context context,AppInfo appInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(appInfo.appName);
+        builder.setMessage("Version:"+appInfo.versionName+"\n"+
+                "Install time:"+new Date(appInfo.firstInstallTime).toLocaleString()+"\n"+
+                appInfo.signature+"\n"+
+                "Permissions:"+"\n"+appInfo.requestedPermissions);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
 }

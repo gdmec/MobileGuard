@@ -33,7 +33,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
     private ListView mListView;
     private List<AppInfo> appInfos;
     private List<AppInfo> userAppInfos = new ArrayList<AppInfo>();
-    private  List<AppInfo> systemAppInfos = new ArrayList<AppInfo>();
+    private List<AppInfo> systemAppInfos = new ArrayList<AppInfo>();
     private AppManagerAdapter adapter;
     private TextView mAppNumTV;
     /**接收应用程序卸载成功的广播*/
@@ -45,7 +45,8 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
             switch (msg.what) {
                 case 10:
                     if(adapter == null){
-                        adapter = new AppManagerAdapter(userAppInfos, systemAppInfos, AppManagerActivity.this);
+                        adapter = new AppManagerAdapter(userAppInfos, systemAppInfos,
+                                AppManagerActivity.this);
                     }
                     mListView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
