@@ -28,7 +28,8 @@ public class AppInfoParser {
         //获取包管理器。
         PackageManager pm = context.getPackageManager();
         //若要获得已安装app的签名和权限信息，要在获取时传入相关flags，否则不会获取。
-        List<PackageInfo> packInfos = pm.getInstalledPackages(PackageManager.GET_SIGNATURES+PackageManager.GET_PERMISSIONS);
+        List<PackageInfo> packInfos = pm.getInstalledPackages(PackageManager.GET_SIGNATURES
+                +PackageManager.GET_PERMISSIONS);
         List<AppInfo> appinfos = new ArrayList<AppInfo>();
         for(PackageInfo packInfo:packInfos){
             AppInfo appinfo = new AppInfo();

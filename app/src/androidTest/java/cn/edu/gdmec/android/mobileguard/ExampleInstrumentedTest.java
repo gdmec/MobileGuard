@@ -329,7 +329,7 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗向导"));
         String str = result.getText();
     }
-    //@Test
+    @Test
     public void t12CommunicationGuardWithoutTitleBar() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
         result.clickAndWaitForNewWindow();
@@ -341,7 +341,7 @@ public class ExampleInstrumentedTest {
         }
 
     }
-    //@Test
+    @Test
     public void t13AddBlackCannotNull() throws Exception {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
         result.clickAndWaitForNewWindow();
@@ -354,7 +354,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("No implement of valid function for phonenumber and name in AddBlakNumberActivity .");
         }
     }
-    //@Test
+    @Test
     public void t14AddContactName() throws Exception {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
         result.clickAndWaitForNewWindow();
@@ -375,7 +375,7 @@ public class ExampleInstrumentedTest {
         String str = name.getText();
         assertEquals("get name from contact list",str,"York Cui");
     }
-    //@Test
+    @Test
     public void t15BlacknameListViewScroll() throws Exception {
         UiObject result = mDevice.findObject(new UiSelector().textStartsWith("通讯卫士"));
         result.clickAndWaitForNewWindow();

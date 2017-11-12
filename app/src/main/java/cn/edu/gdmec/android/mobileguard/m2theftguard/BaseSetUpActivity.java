@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
