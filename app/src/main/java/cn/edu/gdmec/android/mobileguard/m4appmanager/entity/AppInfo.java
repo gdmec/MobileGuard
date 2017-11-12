@@ -27,6 +27,8 @@ public class AppInfo {
     public String signature;
     /**权限信息*/
     public String requestedPermissions;
+    /**活动信息*/
+    public String activities;
 
     /**拿到App位置字符串*/
     public String getAppLocation(boolean isInRoom) {

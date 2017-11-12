@@ -12,46 +12,35 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.ScanAppInfo;
 
-/**
- * Created by apple on 2017/11/12.
- */
-
 public class ScanVirusAdapter extends BaseAdapter {
     private List<ScanAppInfo> mScanAppInfos;
     private Context context;
-
     public ScanVirusAdapter(List<ScanAppInfo> scanAppInfo,Context context) {
         super();
         mScanAppInfos = scanAppInfo;
         this.context = context;
     }
-
     static class ViewHolder{
         ImageView mAppIconImgv;
         TextView  mAppNameTV;
         ImageView mScanIconImgv;
     }
-
     @Override
     public int getCount() {
         return mScanAppInfos.size();
     }
-
     @Override
     public Object getItem(int i) {
         return mScanAppInfos.get(i);
     }
-
     @Override
     public long getItemId(int i) {
         return i;
     }
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
         if(view == null){
-            //由于程序锁的条目与病毒扫描内容基本一致，因此重用程序锁的布局
             view = View.inflate(context, R.layout.item_list_applock, null);
             holder = new ViewHolder();
             holder.mAppIconImgv = (ImageView) view.findViewById(R.id.imgv_appicon);

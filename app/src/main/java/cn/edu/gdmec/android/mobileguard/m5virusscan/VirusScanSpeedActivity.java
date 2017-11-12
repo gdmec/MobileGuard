@@ -89,7 +89,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         scanVirus();
     }
     /**
-     * 扫描病毒
+     * 扫描病毒 使用线程做耗时任务
      * */
     private void scanVirus() {
         flag = true;
@@ -97,7 +97,6 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         process = 0;
         mScanAppInfos.clear();
         new Thread() {
-
             public void run() {
                 Message msg = Message.obtain();
                 msg.what = SCAN_BENGIN;
@@ -111,11 +110,12 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                         return;
                     }
                     String apkpath = info.applicationInfo.sourceDir;
-                    // 检查获取这个文件的 特征码
+                    // 检查获取这个文件的 md5特征码
                     String md5info = MD5Utils.getFileMd5(apkpath);
                     System.out.println(apkpath);
                     System.out.println(md5info);
-                    AntiVirusDao antiVirusDao = new AntiVirusDao(VirusScanSpeedActivity.this.getApplicationContext());
+                    AntiVirusDao antiVirusDao = new AntiVirusDao(
+                            VirusScanSpeedActivity.this.getApplicationContext());
                     String result = antiVirusDao.checkVirus(md5info);
                     msg = Message.obtain();
                     msg.what = SCANNING;

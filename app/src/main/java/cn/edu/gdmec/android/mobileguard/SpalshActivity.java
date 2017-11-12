@@ -23,12 +23,18 @@ public class SpalshActivity extends AppCompatActivity {
         mVersion = MyUtils.getVersion(getApplicationContext());
         mVersionTV = (TextView) findViewById(R.id.tv_splash_version);
         mVersionTV.setText("版本号:"+mVersion);
-        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SpalshActivity.this);
+//        VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
+//            @Override
+//            public void afterDownload(String filename) {
+//                MyUtils.installApk(SpalshActivity.this,filename);
+//            }
+//        };
+//        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SpalshActivity.this,downloadCallback,HomeActivity.class);
 //        new Thread(){
 //
 //            @Override
 //            public void run() {
-//                versionUpdateUtils.getCloudVersion();
+//                versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
 //            }
 //        }.start();
         startActivity(new Intent(this, HomeActivity.class));

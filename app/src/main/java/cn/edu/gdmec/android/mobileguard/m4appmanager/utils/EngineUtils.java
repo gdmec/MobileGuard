@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
 public class EngineUtils {
@@ -72,6 +73,19 @@ public class EngineUtils {
                 "Install time:"+new Date(appInfo.firstInstallTime).toLocaleString()+"\n"+
                 appInfo.signature+"\n"+
                 "Permissions:"+"\n"+appInfo.requestedPermissions);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    public static void showApplicationActivities(Context context, AppInfo appInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(appInfo.appName);
+        builder.setMessage("Activities:"+"\n"+appInfo.activities);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

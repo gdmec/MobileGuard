@@ -1,6 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -29,7 +31,7 @@ public class AppInfoParser {
         PackageManager pm = context.getPackageManager();
         //若要获得已安装app的签名和权限信息，要在获取时传入相关flags，否则不会获取。
         List<PackageInfo> packInfos = pm.getInstalledPackages(PackageManager.GET_SIGNATURES
-                +PackageManager.GET_PERMISSIONS);
+                +PackageManager.GET_PERMISSIONS+PackageManager.GET_ACTIVITIES);
         List<AppInfo> appinfos = new ArrayList<AppInfo>();
         for(PackageInfo packInfo:packInfos){
             AppInfo appinfo = new AppInfo();
@@ -71,6 +73,13 @@ public class AppInfoParser {
                     sb.append(per+"\n");
                 }
                 appinfo.requestedPermissions = sb.toString();
+            }
+            sb.delete(0,sb.length());
+            if(packInfo.activities !=null){
+                for(ActivityInfo activityInfo:packInfo.activities){
+                    sb.append(activityInfo.toString()+"\n");
+                }
+                appinfo.activities=sb.toString();
             }
 
             final Signature[] arrSignatures = packInfo.signatures;
