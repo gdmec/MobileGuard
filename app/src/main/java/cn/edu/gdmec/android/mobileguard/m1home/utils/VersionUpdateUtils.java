@@ -61,6 +61,7 @@ public class VersionUpdateUtils {
     private DownloadCallback downloadCallback;
     //下载任务的id
     private long downloadId;
+    //下载完毕的广播接收者
     private BroadcastReceiver broadcastReceiver;
 
     //构造方法
@@ -70,8 +71,6 @@ public class VersionUpdateUtils {
         this.downloadCallback = downloadCallback;
         this.nextActivty = nextActivty;
     }
-
-
 
     //发送进入主界面消息
     private void enterHome(){
@@ -219,7 +218,7 @@ public class VersionUpdateUtils {
             public void onReceive(Context context, Intent intent) {
                 long ID = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
                 if (ID == Id) {
-                    Toast.makeText(context.getApplicationContext(), "任务:" + Id + " 下载完成!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context.getApplicationContext(), "下载编号:" + Id +"的"+filename+" 下载完成!", Toast.LENGTH_LONG).show();
                 }
                 context.unregisterReceiver(broadcastReceiver);
                 downloadCallback.afterDownload(filename);
