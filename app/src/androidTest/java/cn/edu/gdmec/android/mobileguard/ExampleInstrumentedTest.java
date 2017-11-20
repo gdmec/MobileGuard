@@ -502,8 +502,8 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void t24EnterCleanCache() throws Exception {
-        //result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
-        //result.clickAndWaitForNewWindow();
+        result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
+        result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("缓存清理"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("缓存扫描"));
