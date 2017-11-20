@@ -77,7 +77,7 @@ public class AppInfoParser {
             sb.delete(0,sb.length());
             if(packInfo.activities !=null){
                 for(ActivityInfo activityInfo:packInfo.activities){
-                    sb.append(activityInfo.toString()+"\n");
+                    sb.append(activityInfo.name+"\n");
                 }
                 appinfo.activities=sb.toString();
             }

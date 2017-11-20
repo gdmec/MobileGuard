@@ -25,6 +25,8 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivi
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.BlackNumberOpenHelper;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.CleanCacheActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -68,6 +70,9 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 3:
                         startActivity(VirusScanActivity.class);
+                        break;
+                    case 4:
+                        startActivity(CacheClearListActivity.class);
                         break;
                 }
             }
