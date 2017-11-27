@@ -157,7 +157,6 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             this.info = info;
         }
 
-        @Override
         public void onGetStatsCompleted(PackageStats pStats, boolean succeeded)
                 throws RemoteException {
             long cachesize = pStats.cacheSize;
