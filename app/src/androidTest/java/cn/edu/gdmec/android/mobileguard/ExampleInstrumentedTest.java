@@ -746,11 +746,6 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
         result.click();
         sleep(1000);
-        result = mDevice.findObject(new UiSelector().className("android.widget.EditText"));
-        result.setText("1");
-        result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
-        result.click();
-        sleep(1000);
         result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
         if(!result.exists()){
             throw new Exception("Can't lock App1.");
