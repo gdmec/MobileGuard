@@ -809,7 +809,7 @@ public class ExampleInstrumentedTest {
         result.clickAndWaitForNewWindow();
         //result = mDevice.findObject(new UiSelector().className("android.widget.Button"));
         //result.clickAndWaitForNewWindow();
-        sleep(5000);
+        //sleep(5000);
         UiScrollable  appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
         appList.flingToBeginning(30);
         UiObject result = appList.getChildByText(new UiSelector().className("android.widget.TextView"),"App2(fake virus.)",true);
