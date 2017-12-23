@@ -112,7 +112,7 @@ public class VersionUpdateUtils {
         try {
             HttpClient client = new DefaultHttpClient();
 		  /*连接超时*/
-            //HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
+            HttpConnectionParams.setConnectionTimeout(client.getParams(), 10000);
         /*请求超时*/
             HttpConnectionParams.setSoTimeout(client.getParams(), 5000);
             HttpGet httpGet = new HttpGet(url);
