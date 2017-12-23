@@ -741,12 +741,7 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
         result.click();
         sleep(1000);
-        result = mDevice.findObject(new UiSelector().className("android.widget.EditText"));
-        result.setText("1");
-        result = mDevice.findObject(new UiSelector().className("android.widget.ImageView").instance(2));
-        result.click();
-        sleep(1000);
-        result = mDevice.findObject(new UiSelector().textStartsWith("手机防盗"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
         if(!result.exists()){
             throw new Exception("Can't lock App1.");
         }
@@ -786,7 +781,7 @@ public class ExampleInstrumentedTest {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
         UiScrollable  appList = new UiScrollable(new UiSelector().className("android.widget.ListView"));
-        appList.scrollForward(30);
+        appList.scrollForward(50);
         result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("活动"));
